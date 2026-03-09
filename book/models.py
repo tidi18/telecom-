@@ -10,6 +10,7 @@ class Genre(models.Model):
 
 
 class Book(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
     authors = models.ManyToManyField(Author)
     title = models.CharField(max_length=200)
     summary = models.TextField()
