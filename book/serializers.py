@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Book, Genre
 from author.models import Author
+from author.serializers import AuthorSerializer
 
 
 
@@ -45,3 +46,16 @@ class BookUpdateSerializer(serializers.ModelSerializer):
         fields = ['title', 'summary', 'isbn', 'publication_date', 'authors', 'genres']
 
 
+class GenreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Genre
+        fields = ['id', 'name']
+
+
+class BookFilterSerializer(serializers.ModelSerializer):
+    authors = AuthorSerializer(many=True)
+    genres = GenreSerializer(many=True)
+
+    class Meta:
+        model = Book
+        fields = ['id', 'title', 'authors', 'genres', 'publication_date']
