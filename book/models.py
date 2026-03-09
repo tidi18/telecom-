@@ -14,7 +14,7 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     summary = models.TextField()
     isbn = models.CharField(max_length=13, unique=True)
-    publication_date = models.DateField(auto_now_add=True)
+    publication_date = models.DateField()
     genres = models.ManyToManyField(Genre)
 
     def __str__(self):

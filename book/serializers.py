@@ -9,7 +9,7 @@ from author.serializers import AuthorSerializer
 class BookCreateSerializer(serializers.ModelSerializer):
     authors = serializers.PrimaryKeyRelatedField(queryset=Author.objects.all(), many=True)
     genres = serializers.PrimaryKeyRelatedField(queryset=Genre.objects.all(), many=True)
-    publication_date = serializers.DateField(read_only=True)
+
 
     class Meta:
         model = Book
@@ -39,7 +39,7 @@ class BookDetailSerializer(serializers.ModelSerializer):
 class BookUpdateSerializer(serializers.ModelSerializer):
     authors = serializers.PrimaryKeyRelatedField(queryset=Author.objects.all(), many=True)
     genres = serializers.PrimaryKeyRelatedField(queryset=Genre.objects.all(), many=True)
-    publication_date = serializers.DateField(read_only=True)
+
 
     class Meta:
         model = Book
