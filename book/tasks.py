@@ -48,8 +48,7 @@ def notify_new_books():
 @shared_task
 def notify_anniversary_books():
     """Логирует юбилейные книги"""
-
-    today = date.today()
+    today = timezone.localdate()
     users = User.objects.all()
     anniversary_years = [5, 10, 20, 25, 50, 75, 100]
 
