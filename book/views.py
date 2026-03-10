@@ -1,6 +1,6 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import OrderingFilter
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated
 from .models import Book
 from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
 from .serializers import BookCreateSerializer, BookSerializer, BookDetailSerializer, BookUpdateSerializer, \
@@ -10,30 +10,30 @@ from .filters import BookFilter
 class BookCreateAPIView(CreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookCreateSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
 
 class BookListAPIView(ListAPIView):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
 class BookDetailAPIView(RetrieveAPIView):
     queryset = Book.objects.all()
     serializer_class = BookDetailSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
 
 class BookUpdateAPIView(UpdateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookUpdateSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
 
 class BookDeleteAPIView(DestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookDetailSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
 
 
@@ -41,7 +41,7 @@ class BookDeleteAPIView(DestroyAPIView):
 class BookFiterAPIView(ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookFilterSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     filterset_class = BookFilter
 

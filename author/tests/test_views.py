@@ -15,7 +15,7 @@ class AuthorViewTest(APITestCase):
         )
 
 
-        self.client.force_authenticate(user=self.user)
+
 
         self.author = Author.objects.create(
             first_name="test first name",
@@ -28,6 +28,7 @@ class AuthorViewTest(APITestCase):
     def test_get_authors_list(self):
 
         url = reverse("author-list")
+        self.client.force_authenticate(user=self.user)
 
         response = self.client.get(url)
 
