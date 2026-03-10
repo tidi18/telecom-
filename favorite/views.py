@@ -12,6 +12,8 @@ class FavoriteListView(ListAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Favorite.objects.none()
         return Favorite.objects.filter(user=self.request.user)
 
 
@@ -34,6 +36,8 @@ class FavoriteDeleteView(DestroyAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Favorite.objects.none()
         return Favorite.objects.filter(user=self.request.user)
 
 class FavoriteClearView(APIView):

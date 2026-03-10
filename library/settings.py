@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'book',
     'author',
     'favorite',
+    'drf_yasg',
 
 ]
 
