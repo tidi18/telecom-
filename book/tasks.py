@@ -55,6 +55,8 @@ def notify_anniversary_books():
 
     books = Book.objects.all()
 
+    found = False
+
     for book in books:
         pub_date = book.publication_date
 
@@ -62,9 +64,14 @@ def notify_anniversary_books():
             years_passed = today.year - pub_date.year
 
             if years_passed in anniversary_years:
+                found = True
+
                 for user in users:
                     anniversary_logger.info(
                         f"Пользователь {user.email}: юбилей книги '{book.title}' — {years_passed} лет!"
                     )
 
-    return anniversary_logger.info("Проверка юбилейных книг выполнена")
+    if not found:
+        return "Проверка юбилейных книг выполнена"
+
+    return "Юбилейные книги найдены"
