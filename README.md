@@ -53,7 +53,7 @@ API Документация
     https://github.com/tidi18/telecom-.git
 
   Перейдите в корневую директорию:  
-    cd library
+    cd telecom-
 
   Запуск приложения Соберите и запустите контейнеры:
     docker-compose build
